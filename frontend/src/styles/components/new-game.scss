@@ -1,0 +1,47 @@
+.new-game {
+    max-width: $max-form-width;
+    width: 100%;
+
+    input {
+        margin-bottom: 1rem;
+        padding: 0.5rem;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 0.25rem;
+        width: 100%;
+        box-sizing: border-box;
+
+        &:focus {
+            outline: none;
+            border-color: $green;
+        }
+    }
+
+    p {
+        text-align: center;
+    }
+
+    &__sides {
+        margin: 2rem 0;
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+
+        &__side {
+            width: 64px;
+            height: 64px;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 16px;
+
+            &:hover {
+                background-color: $light-gray-hover;
+            }
+        }
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: space-between;
+    }
+}

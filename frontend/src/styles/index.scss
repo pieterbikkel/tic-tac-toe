@@ -1,0 +1,73 @@
+// Colors
+
+$white: #fff;
+$black: #000;
+$green: #28a745;
+$hover-green: #218838;
+$light-gray-hover: #f8f9fa;
+
+// Variables
+
+$board-dimension: 500px;
+$max-form-width: 400px;
+
+// components
+@import 'components/board';
+@import 'components/button';
+@import 'components/available-games';
+@import 'components/new-game';
+@import 'components/game-row';
+
+// pages
+@import 'pages/home';
+@import 'pages/game';
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color: $black;
+  background-color: $white;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+.tictactoe {
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+  text-align: center;
+}
+
+h6 {
+  font-size: 1rem;
+  margin: 0;
+}
+
+a {
+  color: $black;
+  text-decoration: none;
+  transition: color 0.2s;
+
+  &:hover {
+    color: $hover-green;
+  }
+}
+
+.bg-green {
+  background-color: rgba($color: $green, $alpha: 0.7) !important;
+}

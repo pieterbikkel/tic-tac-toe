@@ -1,0 +1,13 @@
+.board {
+    width: $board-dimension;
+    height: $board-dimension;
+    display: flex;
+    flex-wrap: wrap;
+
+    .box {
+        box-sizing: border-box;
+        width: calc($board-dimension / 3);
+        height: calc($board-dimension / 3);
+        border: 1px solid black;
+    }
+}

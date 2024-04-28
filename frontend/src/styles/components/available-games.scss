@@ -1,0 +1,12 @@
+.available-games {
+    display: flex;        
+    place-items: center;
+    gap: 1rem;
+    max-width: $max-form-width;
+
+    &__line {
+        width: 111px;
+        height: 1px;
+        background-color: $black;
+    } 
+}
