@@ -2,16 +2,21 @@ import { useState, useEffect } from 'react'
 import AvailableGames from './components/AvailableGames'
 import NewGame from './components/NewGame'
 import { Link } from 'react-router-dom'
-import useGame from './hooks/useGame'
+import useGameService from './hooks/useGameService'
 
 function App() {
 
-  const { getGames, games } = useGame();
-
   const [showNewGameForm, setShowNewGameForm] = useState(false)
+  const gameService = useGameService();
+
+  const [games, setGames] = useState([]);
 
   useEffect(() => {
-    getGames();
+    const fetchGames = async () => {
+      const games = await gameService.getGames();
+      setGames(games);
+    }
+    fetchGames();
   }, []);
 
   return (
@@ -21,7 +26,6 @@ function App() {
       {!showNewGameForm && <AvailableGames showNewGameForm={showNewGameForm} setShowNewGameForm={setShowNewGameForm} games={games}/>}
 
       {showNewGameForm && <NewGame showNewGameForm={showNewGameForm} setShowNewGameForm={setShowNewGameForm}/>}
-
       <br />
     </div>
   )

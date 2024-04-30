@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import Cross from '../assets/cross.svg';
 import Naught from '../assets/naught.svg';
-import useGame from '../hooks/useGame';
+import { useGameContext } from '../contexts/GameContext';
+import useGameService from '../hooks/useGameService';
 
 interface NewGameProps {
     showNewGameForm: boolean;
@@ -11,17 +12,20 @@ interface NewGameProps {
 }
 
 function NewGame({ showNewGameForm, setShowNewGameForm }: NewGameProps) {
-    const { createGame } = useGame();
     let navigate = useNavigate();
+    const gameContext = useGameContext();
+    const gameService = useGameService();
+
     const [hostIsNaughts, setHostIsNaughts] = useState(false);
     const [gameName, setGameName] = useState('New Game');
 
     const createGameAction = async () => {
-        console.log('Creating game');
-        const game = await createGame({
+        const game = await gameService.createGame({
             name: gameName,
             hostIsNaughts: hostIsNaughts
         });
+        gameContext.game = game;
+        gameContext.currentPlayer = game.hostIsNaughts ? "naughts" : "cross";
         navigate('/game/' + game._id);
     }
 

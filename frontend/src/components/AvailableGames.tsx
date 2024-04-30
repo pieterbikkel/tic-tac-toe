@@ -2,6 +2,7 @@ import Button from './Button';
 import GameRow from './GameRow';
 import { Game } from '../types/Game';
 import { useNavigate } from 'react-router-dom';
+import { useGameContext } from '../contexts/GameContext';
 
 interface AvailableGamesProps {
     showNewGameForm: boolean;
@@ -12,10 +13,12 @@ interface AvailableGamesProps {
 function AvailableGames({ showNewGameForm, setShowNewGameForm, games }: AvailableGamesProps) {
 
     const navigate = useNavigate();
+    const gameContext = useGameContext();
 
     const joinGameAction = (game: Game) => {
-        console.log('Joining game', game);
-        navigate('/game' + game._id);
+        gameContext.game = game;
+        gameContext.currentPlayer = game.hostIsNaughts ? "cross" : "naughts";
+        navigate('/game/' + game._id);
     }
 
     return (
