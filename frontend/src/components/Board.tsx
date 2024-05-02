@@ -17,10 +17,11 @@ function Board({ socket }: any) {
     ]);
 
     const [yourTurn, setYourTurn] = useState(false);
+    const [winner, setWinner] = useState("");
 
     const handleClick = (row: number, col: number) => {
         // Check if the cell is empty
-        if (board[row][col] === 0) {
+        if (board[row][col] === 0 && winner === "") {
             // Create a copy of the board
             const newBoard = [...board];
             // Update the cell with the current player
@@ -43,7 +44,7 @@ function Board({ socket }: any) {
             setYourTurn(move.turn === gameContext.currentPlayer);
             setBoard(move.board);
             if (move.winner) {
-                gameContext.winner = move.winner;
+                setWinner(move.winner);
             }
         })
 
@@ -54,6 +55,7 @@ function Board({ socket }: any) {
     }, [socket]);
 
     return (
+        <>
         <div className={`board ${yourTurn ? "" : "board-disabled"}`}>
             {board.map((row, rowIndex) => {
                 return (
@@ -69,7 +71,13 @@ function Board({ socket }: any) {
                     </div>
                 )                
             })}
+
+            
         </div>
+        {winner !== "" && 
+            <h3>Winner is: {winner}</h3>
+        }
+        </>
     )
 }
 

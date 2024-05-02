@@ -32,7 +32,7 @@ const useGameService = () => {
 
     const deleteGame = async (id: string) => {
         try {
-            await fetch(url + id, {
+            await fetch(url + "/" + id, {
                 method: 'DELETE',
             });            
         } catch (error) {

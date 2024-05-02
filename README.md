@@ -1,5 +1,5 @@
 # Tic Tac Toe
-multiplayer game of Tic Tac Toe using websockets
+Multiplayer game of Tic Tac Toe using websockets
 
 ## How to run
 
